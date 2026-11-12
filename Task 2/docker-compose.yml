@@ -1,0 +1,21 @@
+# Submission compose file: image-only, no build steps.
+# 1) Build and push the frontend:   docker build -t YOUR_DOCKERHUB_USER/callzo-task2-frontend:1.0.0 .
+#                                   docker push YOUR_DOCKERHUB_USER/callzo-task2-frontend:1.0.0
+# 2) Replace YOUR_DOCKERHUB_USER below, then run: docker compose up
+services:
+  mock-api:
+    image: meetrj/callzo-mock-usage-api
+    platform: linux/arm64
+    container_name: mock-api
+    ports:
+      - "8001:8001"
+
+  frontend:
+    image:  singh12553/callzo-task2-frontend:1.0.0
+    container_name: frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mock-api
+    environment:
+      - API_URL=http://mock-api:8001

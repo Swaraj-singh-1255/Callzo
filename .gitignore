@@ -1,0 +1,10 @@
+@"
+.venv/
+.env
+node_modules/
+dist/
+__pycache__/
+*.pyc
+"@ | Set-Content -Encoding utf8 .gitignore
+
+Get-ChildItem "Task 1", "Task 2" -Force | Select-Object Name.pytest_cache/

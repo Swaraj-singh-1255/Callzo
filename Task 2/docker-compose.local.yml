@@ -1,0 +1,15 @@
+# LOCAL DEV ONLY (not for submission). Builds everything from source and uses the
+# bundled stand-in API, useful if the official image does not run on your CPU.
+services:
+  mock-api:
+    build: ./mock-api
+    container_name: mock-api
+    ports:
+      - "8001:8001"
+  frontend:
+    build: .
+    container_name: frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mock-api

@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply h-full;
+  }
+  body {
+    @apply min-h-full;
+  }
+  #root {
+    @apply min-h-full;
+  }
+}
+
+/* Focus visible styles for keyboard users */
+:focus-visible {
+  @apply outline-2 outline-offset-2 outline-brand-500;
+}
